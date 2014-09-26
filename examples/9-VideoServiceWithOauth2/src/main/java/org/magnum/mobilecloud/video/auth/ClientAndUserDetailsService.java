@@ -47,13 +47,11 @@ public class ClientAndUserDetailsService implements UserDetailsService,
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-		UserDetails user = null;
 		try{
-			user = users_.loadUserByUsername(username);
+			return users_.loadUserByUsername(username);
 		}catch(UsernameNotFoundException e){
-			user = clientDetailsWrapper_.loadUserByUsername(username);
+			return clientDetailsWrapper_.loadUserByUsername(username);
 		}
-		return user;
 	}
 
 }
