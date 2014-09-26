@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class AnEmptyController {
+public class VideoController {
 	
 	/**
 	 * You will need to create one or more Spring controllers to fulfill the
