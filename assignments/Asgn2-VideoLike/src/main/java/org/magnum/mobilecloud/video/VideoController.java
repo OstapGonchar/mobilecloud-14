@@ -24,10 +24,8 @@ import org.magnum.mobilecloud.video.repository.Video;
 import org.magnum.mobilecloud.video.repository.VideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -52,8 +50,17 @@ public class VideoController {
         return v;
     }
 
-    @RequestMapping(value=VideoSvcApi.VIDEO_SVC_PATH, method=RequestMethod.GET)
-    public @ResponseBody Collection<Video> getVideoList(){
+    @RequestMapping(value = VideoSvcApi.VIDEO_SVC_PATH, method = RequestMethod.GET)
+    public @ResponseBody Collection<Video> getVideoList() {
         return Lists.newArrayList(videos.findAll());
+    }
+
+    @RequestMapping(value = VideoSvcApi.VIDEO_SVC_PATH + "/{id}", method = RequestMethod.GET)
+    public @ResponseBody Video getVideoById(@PathVariable long id) throws NoSuchRequestHandlingMethodException {
+        final Video video = videos.findOne(id);
+        if (video == null) {
+            throw new  NoSuchRequestHandlingMethodException("getVideoById", this.getClass());
+        }
+        return video;
     }
 }
