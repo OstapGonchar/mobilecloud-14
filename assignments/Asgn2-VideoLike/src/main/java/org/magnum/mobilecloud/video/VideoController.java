@@ -97,7 +97,7 @@ public class VideoController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    private void checkVideoForLikes(Set likeUsernames, ExistType shouldExist, String name) {
+    private void checkVideoForLikes(Set<String> likeUsernames, ExistType shouldExist, String name) {
         switch (shouldExist) {
         case SHOULD_EXIST: {
             if (likeUsernames.contains(name)) {
