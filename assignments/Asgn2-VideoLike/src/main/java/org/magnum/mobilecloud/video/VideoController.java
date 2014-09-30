@@ -77,7 +77,7 @@ public class VideoController {
         return video;
     }
 
-    @RequestMapping(value = VideoSvcApi.VIDEO_TITLE_SEARCH_PATH, method = RequestMethod.GET)
+    /*@RequestMapping(value = VideoSvcApi.VIDEO_TITLE_SEARCH_PATH, method = RequestMethod.GET)
     public @ResponseBody Collection<Video> findByTitle(@RequestParam(VideoSvcApi.TITLE_PARAMETER) String title) {
         return videos.findByName(title);
     }
@@ -86,7 +86,7 @@ public class VideoController {
     public @ResponseBody Collection<Video> findByDurationLessThan(
             @RequestParam(VideoSvcApi.DURATION_PARAMETER) long duration) {
         return videos.findByDurationLessThan(duration);
-    }
+    }*/
 
     @RequestMapping(value = VIDEO_LIKE_PATH, method = RequestMethod.POST)
     public @ResponseBody ResponseEntity likeVideo(@PathVariable long id, Principal principal) {
